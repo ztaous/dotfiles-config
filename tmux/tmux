@@ -1,0 +1,43 @@
+# Terminal & colors
+set -g default-terminal "tmux-256color"
+set -ag terminal-overrides ",*256col*:Tc"
+
+# Responsiveness
+set -sg escape-time 10
+set -g focus-events on
+set -g repeat-time 750
+
+# Scrollback
+set -g history-limit 50000
+
+# Window / pane indexing
+set -g base-index 1
+setw -g pane-base-index 1
+set -g renumber-windows on
+
+# Mouse
+set -g mouse on
+
+# Copy mode (vi)
+setw -g mode-keys vi
+bind -T copy-mode-vi v send-keys -X begin-selection
+bind -T copy-mode-vi y send-keys -X copy-selection-and-cancel
+
+# Splits
+bind | split-window -h -c "#{pane_current_path}"
+bind - split-window -v -c "#{pane_current_path}"
+
+# Pane navigation
+bind -r h select-pane -L
+bind -r j select-pane -D
+bind -r k select-pane -U
+bind -r l select-pane -R
+
+# Pane resizing
+bind -r H resize-pane -L 5
+bind -r J resize-pane -D 5
+bind -r K resize-pane -U 5
+bind -r L resize-pane -R 5
+
+# Reload
+bind r source-file ~/.config/tmux/tmux.conf \; display-message "tmux.conf reloaded"
