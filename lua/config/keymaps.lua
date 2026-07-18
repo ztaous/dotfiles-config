@@ -1,12 +1,5 @@
 local map = vim.keymap.set
 
--- NvimTree safety
-local function leave_tree()
-  if vim.bo.filetype == "NvimTree" then
-    vim.cmd("wincmd p")
-  end
-end
-
 -- Menus
 map("n", "<leader>h", "<cmd>Alpha<cr>", { desc = "Home" })
 map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
@@ -19,4 +12,3 @@ map("n", "<leader>bb", "<cmd>b#<cr>", { desc = "Buffer: alternate" })
 -- Tabs / workspaces (t*)
 map("n", "<leader>tn", "<cmd>tabnew<cr>", { desc = "Tab: new" })
 map("n", "<leader>tq", "<cmd>tabclose<cr>", { desc = "Tab: close" })
-

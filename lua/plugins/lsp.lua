@@ -52,11 +52,11 @@ return {
 
           map("n", "gd", vim.lsp.buf.definition, "Go to definition")
           map("n", "gr", vim.lsp.buf.references, "References")
-          map("n", "K", vim.lsp.buf.hover, "Hover")
           map("n", "<leader>rn", vim.lsp.buf.rename, "Rename")
           map("n", "<leader>ca", vim.lsp.buf.code_action, "Code action")
-          map("n", "[d", vim.diagnostic.goto_prev, "Prev diagnostic")
-          map("n", "]d", vim.diagnostic.goto_next, "Next diagnostic")
+          map("n", "<leader>cf", function()
+            vim.lsp.buf.format({ bufnr = bufnr, timeout_ms = 1500 })
+          end, "Format buffer")
 
           local client = vim.lsp.get_client_by_id(args.data.client_id)
           if client and client.supports_method and client:supports_method("textDocument/inlayHint") then
@@ -70,4 +70,3 @@ return {
     end,
   },
 }
-

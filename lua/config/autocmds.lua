@@ -1,31 +1,8 @@
--- Highlight on yank
+local group = vim.api.nvim_create_augroup("user_config", { clear = true })
+
 vim.api.nvim_create_autocmd("TextYankPost", {
+  group = group,
   callback = function()
     vim.highlight.on_yank({ timeout = 150 })
   end,
 })
-
--- Persist colorscheme
-vim.api.nvim_create_autocmd("ColorScheme", {
-  group = group,
-  callback = function()
-    require("config.colorscheme").save()
-    vim.api.nvim_set_hl(0, "BufferlineTreeTitle", { bold = true, link = "Title" })
-  end,
-})
-
-
--- Keep cwd at project root
-vim.api.nvim_create_autocmd("BufEnter", {
-  callback = function()
-    if vim.bo.buftype ~= "" then return end
-    local file = vim.api.nvim_buf_get_name(0)
-    if file == "" then return end
-
-    local root = require("config.root").get(0)
-    if root and root ~= "" and vim.fn.getcwd() ~= root then
-      vim.cmd("cd " .. vim.fn.fnameescape(root))
-    end
-  end,
-})
-
