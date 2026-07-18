@@ -30,13 +30,9 @@ vim.opt.cursorlineopt = "number,line"
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
 
--- Tabline always visible
-vim.opt.showtabline = 2
-
 --Split stability
 vim.opt.splitkeep = "screen"
 
 -- Cursor shapes by mode
 vim.opt.guicursor = "n-v-c:block,i-ci:ver25,r-cr:hor20,o:hor50"
-
 

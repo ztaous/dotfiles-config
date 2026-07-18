@@ -1,7 +1,6 @@
 local map = vim.keymap.set
 
 -- Menus
-map("n", "<leader>h", "<cmd>Alpha<cr>", { desc = "Home" })
 map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
 map("n", "<leader>m", "<cmd>Mason<cr>", { desc = "Mason" })
 
