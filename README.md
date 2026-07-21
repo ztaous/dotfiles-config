@@ -70,6 +70,8 @@ The leader key is `Space`.
 
 ### Git
 
+- `[c`: previous hunk
+- `]c`: next hunk
 - `<leader>gh`: preview hunk
 - `<leader>gs`: stage hunk
 - `<leader>gS`: stage file
@@ -77,6 +79,7 @@ The leader key is `Space`.
 - `<leader>g.`: open Fugitive status
 - `<leader>gc`: commit
 - `<leader>gd`: open vertical diff
+- `<leader>gm`: open merge conflicts in Fugitive's mergetool
 - `<leader>gB`: show blame
 
 ### Management
