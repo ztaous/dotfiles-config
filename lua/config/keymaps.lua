@@ -10,4 +10,4 @@ map("n", "<leader>bb", "<cmd>b#<cr>", { desc = "Buffer: alternate" })
 
 -- Tabs / workspaces (t*)
 map("n", "<leader>tn", "<cmd>tabnew<cr>", { desc = "Tab: new" })
-map("n", "<leader>tq", "<cmd>tabclose<cr>", { desc = "Tab: close" })
+map("n", "<leader>tc", "<cmd>tabclose<cr>", { desc = "Tab: close" })
