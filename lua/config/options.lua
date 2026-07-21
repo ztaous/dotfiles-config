@@ -12,7 +12,7 @@ vim.opt.smartcase = true
 
 vim.opt.signcolumn = "yes"
 vim.opt.updatetime = 250
-vim.opt.timeoutlen = 400
+vim.opt.timeoutlen = 500
 
 vim.opt.termguicolors = true
 vim.opt.clipboard = "unnamedplus"
@@ -35,4 +35,3 @@ vim.opt.splitkeep = "screen"
 
 -- Cursor shapes by mode
 vim.opt.guicursor = "n-v-c:block,i-ci:ver25,r-cr:hor20,o:hor50"
-
