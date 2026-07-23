@@ -12,8 +12,8 @@ Neovim configuration used by this dotfiles repository.
 
 ## Setup
 
-Run `./run.sh` from the root of the dotfiles repository, then open Neovim.
-lazy.nvim installs missing plugins on the first start.
+Run `./run.sh nvim` from the root of the dotfiles repository, then open
+Neovim. lazy.nvim installs missing plugins on the first start.
 
 Language servers are configured for C, C++, Python, JavaScript, TypeScript,
 and Lua. Use `:Mason` to install `clangd`, `pyright`, `vtsls`, and

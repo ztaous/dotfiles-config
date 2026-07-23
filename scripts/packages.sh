@@ -16,7 +16,14 @@ warn_neovim_version() {
 }
 
 if [ "$(uname)" = "Darwin" ]; then
-  brew install bash git tmux fzf ripgrep fd neovim
+  packages=(bash git tmux fzf ripgrep fd neovim)
+  missing=()
+  for package in "${packages[@]}"; do
+    brew list --versions "$package" >/dev/null 2>&1 || missing+=("$package")
+  done
+  if [ "${#missing[@]}" -gt 0 ]; then
+    brew install "${missing[@]}"
+  fi
   warn_neovim_version
   exit 0
 fi
@@ -25,14 +32,36 @@ fi
 
 case "${ID:-}" in
   debian|ubuntu)
-    sudo apt update
-    sudo apt install -y git tmux fzf ripgrep fd-find neovim
+    packages=(git tmux fzf ripgrep fd-find neovim)
+    missing=()
+    for package in "${packages[@]}"; do
+      dpkg-query -W -f='${Status}' "$package" 2>/dev/null | grep -qx "install ok installed" ||
+        missing+=("$package")
+    done
+    if [ "${#missing[@]}" -gt 0 ]; then
+      sudo apt update
+      sudo apt install -y "${missing[@]}"
+    fi
     ;;
   fedora|rhel|centos)
-    sudo dnf install -y git tmux fzf ripgrep fd-find neovim
+    packages=(git tmux fzf ripgrep fd-find neovim)
+    missing=()
+    for package in "${packages[@]}"; do
+      rpm -q "$package" >/dev/null 2>&1 || missing+=("$package")
+    done
+    if [ "${#missing[@]}" -gt 0 ]; then
+      sudo dnf install -y "${missing[@]}"
+    fi
     ;;
   arch)
-    sudo pacman -Syu --needed --noconfirm git tmux fzf ripgrep fd neovim
+    packages=(git tmux fzf ripgrep fd neovim)
+    missing=()
+    for package in "${packages[@]}"; do
+      pacman -Q "$package" >/dev/null 2>&1 || missing+=("$package")
+    done
+    if [ "${#missing[@]}" -gt 0 ]; then
+      sudo pacman -Syu --needed --noconfirm "${missing[@]}"
+    fi
     ;;
   *)
     echo "unsupported distro: ${ID:-unknown}" >&2

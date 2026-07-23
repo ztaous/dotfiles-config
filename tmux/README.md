@@ -10,6 +10,10 @@ A session contains windows, and a window contains panes:
 
 The prefix is `Ctrl-b`. Press the prefix, release it, then press the binding.
 
+## Setup
+
+Run `./run.sh tmux` from the root of the dotfiles repository.
+
 ## Sessions
 
 Run these commands from the shell:
