@@ -39,10 +39,12 @@ setup_macos() {
 }
 
 link_configs() {
-  link git/config     .config/git/config
+  link .editorconfig      .editorconfig
+  link .clang-format      .clang-format
+  link git/config         .config/git/config
   prepare_ssh_dir
-  link ssh/config     .ssh/config
-  link tmux/tmux.conf .config/tmux/tmux.conf
+  link ssh/config         .ssh/config
+  link tmux/tmux.conf     .config/tmux/tmux.conf
   if [ -d "$DOTFILES/nvim" ]; then
     link nvim .config/nvim
   else

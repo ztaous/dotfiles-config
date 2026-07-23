@@ -4,3 +4,22 @@ root = true
 indent_style = space
 indent_size = 4
 insert_final_newline = true
+
+[*.sh]
+indent_size = 2
+
+[*.lua]
+indent_size = 2
+
+[*.c]
+indent_style = tab
+indent_size = 4
+tab_width = 4
+
+[*.go]
+indent_style = tab
+indent_size = 4
+tab_width = 4
+
+[*.{java,js,jsx,ts,tsx,json,jsonc,css,scss,html}]
+indent_size = 2
