@@ -9,9 +9,17 @@ return {
       ts.setup({})
 
       ts.install({
-        "lua", "c", "cpp", "python",
-        "javascript", "typescript", "html", "css",
-        "java", "vhdl", "asm",
+        "lua",
+        "c",
+        "cpp",
+        "python",
+        "javascript",
+        "typescript",
+        "html",
+        "css",
+        "java",
+        "vhdl",
+        "asm",
       })
 
       vim.api.nvim_create_autocmd("FileType", {
