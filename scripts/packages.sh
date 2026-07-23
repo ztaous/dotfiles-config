@@ -16,7 +16,7 @@ warn_neovim_version() {
 }
 
 if [ "$(uname)" = "Darwin" ]; then
-  packages=(bash git tmux fzf ripgrep fd neovim)
+  packages=(bash git tmux fzf ripgrep fd neovim tree-sitter-cli)
   missing=()
   for package in "${packages[@]}"; do
     brew list --versions "$package" >/dev/null 2>&1 || missing+=("$package")
