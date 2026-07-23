@@ -32,7 +32,7 @@ fi
 
 case "${ID:-}" in
   debian|ubuntu)
-    packages=(git tmux fzf ripgrep fd-find neovim)
+    packages=(git tmux fzf ripgrep fd-find neovim tree-sitter-cli build-essential)
     missing=()
     for package in "${packages[@]}"; do
       dpkg-query -W -f='${Status}' "$package" 2>/dev/null | grep -qx "install ok installed" ||
@@ -44,7 +44,7 @@ case "${ID:-}" in
     fi
     ;;
   fedora|rhel|centos)
-    packages=(git tmux fzf ripgrep fd-find neovim)
+    packages=(git tmux fzf ripgrep fd-find neovim tree-sitter-cli gcc)
     missing=()
     for package in "${packages[@]}"; do
       rpm -q "$package" >/dev/null 2>&1 || missing+=("$package")
@@ -54,7 +54,7 @@ case "${ID:-}" in
     fi
     ;;
   arch)
-    packages=(git tmux fzf ripgrep fd neovim)
+    packages=(git tmux fzf ripgrep fd neovim tree-sitter-cli gcc)
     missing=()
     for package in "${packages[@]}"; do
       pacman -Q "$package" >/dev/null 2>&1 || missing+=("$package")
