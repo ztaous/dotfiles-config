@@ -19,6 +19,7 @@ vim.opt.clipboard = "unnamedplus"
 
 vim.opt.splitright = true
 vim.opt.splitbelow = true
+vim.opt.showtabline = 2
 
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
