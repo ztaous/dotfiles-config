@@ -1,4 +1,4 @@
-# Personal Agent Instructions
+# Development Guidelines
 
 - Planning, review, explanation, and diagnosis requests do not authorize
   implementation.
