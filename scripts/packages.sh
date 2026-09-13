@@ -43,7 +43,7 @@ fi
 
 case "${ID:-}" in
   debian|ubuntu)
-    packages=(git tmux fzf ripgrep fd-find neovim tree-sitter-cli build-essential golang-go nodejs npm openjdk-21-jdk python3 python3-pip python3-venv rustc cargo rustfmt sqlite3)
+    packages=(git tmux fzf ripgrep fd-find neovim tree-sitter-cli build-essential golang-go nodejs npm openjdk-21-jdk python3 python3-pip python3-venv rustc cargo rustfmt sqlite3 wl-clipboard xclip)
     missing=()
     for package in "${packages[@]}"; do
       dpkg-query -W -f='${Status}' "$package" 2>/dev/null | grep -qx "install ok installed" ||
@@ -56,6 +56,9 @@ case "${ID:-}" in
     ;;
   fedora|rhel|centos)
     packages=(git tmux fzf ripgrep fd-find neovim tree-sitter-cli gcc golang nodejs npm java-21-openjdk-devel python3 python3-pip rust cargo rustfmt sqlite)
+    if [ "$ID" = "fedora" ]; then
+      packages+=(wl-clipboard xclip)
+    fi
     missing=()
     for package in "${packages[@]}"; do
       rpm -q "$package" >/dev/null 2>&1 || missing+=("$package")
@@ -65,7 +68,7 @@ case "${ID:-}" in
     fi
     ;;
   arch)
-    packages=(git tmux fzf ripgrep fd neovim tree-sitter-cli gcc go nodejs npm jdk21-openjdk python python-pip rust sqlite)
+    packages=(git tmux fzf ripgrep fd neovim tree-sitter-cli gcc go nodejs npm jdk21-openjdk python python-pip rust sqlite wl-clipboard xclip)
     missing=()
     for package in "${packages[@]}"; do
       pacman -Q "$package" >/dev/null 2>&1 || missing+=("$package")
