@@ -104,15 +104,15 @@ The built-in colorscheme is used by default. A colorscheme selected with
 
 ## Plugins
 
-- **lazy.nvim**: plugin installation
-- **nightfox.nvim, rose-pine, gruvbox.nvim, melange-nvim, and kanagawa.nvim**:
-  optional colorschemes
-- **nvim-tree**: file explorer
-- **telescope.nvim**: file, text, buffer, and symbol search
-- **nvim-treesitter**: syntax parsing
-- **which-key.nvim**: keybinding hints
-- **mason.nvim, mason-lspconfig.nvim, and nvim-lspconfig**: language servers
-  and development tools
-- **conform.nvim**: formatting
-- **gitsigns.nvim and vim-fugitive**: Git
-- **nvim-autopairs and nvim-surround**: pairs and surrounding edits
+| Plugin | Purpose |
+|---|---|
+| lazy.nvim | Plugin management |
+| nightfox.nvim, rose-pine, gruvbox.nvim, melange-nvim, kanagawa.nvim | Colorschemes |
+| nvim-tree | File explorer |
+| telescope.nvim | File, text, buffer, and symbol search |
+| nvim-treesitter | Syntax parsing |
+| which-key.nvim | Keybinding hints |
+| mason.nvim, mason-lspconfig.nvim, nvim-lspconfig | Language servers and development tools |
+| conform.nvim | Formatting |
+| gitsigns.nvim, vim-fugitive | Git integration |
+| nvim-autopairs, nvim-surround | Pair and surrounding-text editing |
