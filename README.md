@@ -1,15 +1,15 @@
 # dotfiles
 
-Configuration for Bash, Git, SSH, tmux, Neovim, and coding agents.
+Personal configuration for Bash, Git, SSH, tmux, Neovim, and coding agents.
 
-## Setup
-
-Supported systems:
+## Supported systems
 
 - Debian and Ubuntu
 - Fedora, RHEL, and CentOS
 - Arch Linux
 - Apple Silicon macOS
+
+## Setup
 
 Clone the repository and run:
 
@@ -17,16 +17,23 @@ Clone the repository and run:
 ./run.sh
 ```
 
-The script installs the command-line packages for the current platform, creates
-the configuration links, and generates an SSH key when one does not already
-exist.
+The script installs command-line packages, links the configuration files, and
+creates a GitHub SSH key if one does not already exist.
 
-On Apple Silicon macOS, it also installs Homebrew when needed and makes
-Homebrew Bash the login shell. Homebrew's installer may ask for your password
-and install Apple's Command Line Tools. Open a new terminal after the login
-shell changes.
+### After setup
 
-Individual parts can be run on their own:
+Add the generated public key at <https://github.com/settings/keys> as both an
+authentication key and a signing key. The script copies the key to the clipboard
+on macOS and prints it on Linux.
+
+On Apple Silicon macOS, the setup installs Homebrew when needed and changes the
+login shell to Homebrew Bash. The Homebrew installer may request your password
+and install Apple's Command Line Tools. Open a new terminal after the shell
+changes.
+
+## Selective setup
+
+Run individual parts without installing packages:
 
 ```sh
 ./run.sh tmux
@@ -35,34 +42,35 @@ Individual parts can be run on their own:
 ./run.sh bash git ssh
 ```
 
-Available targets are `packages`, `format`, `git`, `bash`, `ssh`, `tmux`, `nvim`, and `agents`.
-Component targets do not install packages unless `packages` is included.
+Available targets are `packages`, `format`, `git`, `bash`, `ssh`, `tmux`, `nvim`,
+and `agents`. Include `packages` explicitly when package installation is needed.
 
-An existing destination is moved to the same path with a `.bak` suffix before
-a link is created. A later replacement overwrites the previous backup.
-Running the script again leaves correct links unchanged.
+## Backups
 
-Remove backups created for managed configuration paths without changing the
-active configuration:
+Before replacing an existing configuration, the setup moves it to the same path
+with a `.bak` suffix. A later replacement overwrites the previous backup.
+Correct links remain unchanged when the setup runs again.
+
+Remove backups created for managed configuration paths with:
 
 ```sh
 ./run.sh --clear-backups
 ```
 
-After generating an SSH key on macOS, the script copies its public key to the
-clipboard. Add it at <https://github.com/settings/keys> once as an
-authentication key and again as a signing key.
+This command does not change the active configuration.
 
-## Configuration
+## Components
 
-- `.editorconfig` is linked to `~/.editorconfig`.
-- `.clang-format` is linked to `~/.clang-format`.
-- `bash/bash_profile` is linked to `~/.bash_profile`.
-- `bash/bashrc` is linked to `~/.bashrc`.
-- `git/config` is linked to `~/.config/git/config`.
-- `tmux/tmux.conf` is linked to `~/.config/tmux/tmux.conf`.
-- `nvim/` is linked to `~/.config/nvim`.
-- `agents/AGENTS.md` provides shared personal instructions for Codex, Claude
-  Code, and OpenCode.
+| Source | Configured location |
+|---|---|
+| `.editorconfig` | `~/.editorconfig` |
+| `.clang-format` | `~/.clang-format` |
+| `bash/bash_profile` | `~/.bash_profile` |
+| `bash/bashrc` | `~/.bashrc` |
+| `git/config` | `~/.config/git/config` |
+| `ssh/config` | GitHub entry in `~/.ssh/config` |
+| `tmux/tmux.conf` | `~/.config/tmux/tmux.conf` |
+| `nvim/` | `~/.config/nvim` |
+| `agents/AGENTS.md` | Codex, Claude Code, and OpenCode user instructions |
 
-The GitHub entry from `ssh/config` is added to `~/.ssh/config` when missing.
+See [Neovim](nvim/README.md) and [tmux](tmux/README.md) for component usage.
