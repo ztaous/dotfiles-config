@@ -18,7 +18,7 @@ Neovim. lazy.nvim installs missing plugins on the first start.
 Language servers are configured for C, C++, Java, Python, Rust, SQL,
 JavaScript, TypeScript, and Lua. Mason automatically installs `jdtls`,
 `pyright`, `rust-analyzer`, `sqls`, `vtsls`, and `lua-language-server`;
-`clangd` is supplied by the system toolchain.
+`clangd` must be available on `PATH`.
 
 ## Keybindings
 
@@ -87,6 +87,7 @@ The leader key is `Space`.
 - Lua: `stylua`
 - Bash: `shfmt`
 - Kotlin: `ktlint`
+- SQL: `sqlfluff`
 
 ## Plugins
 
@@ -103,5 +104,5 @@ The leader key is `Space`.
 - **gitsigns.nvim and vim-fugitive**: Git
 - **nvim-autopairs and nvim-surround**: pairs and surrounding edits
 
->The built-in colorscheme is used by default. A colorscheme selected with
+> The built-in colorscheme is used by default. A colorscheme selected with
 `:colorscheme` is restored on the next start.

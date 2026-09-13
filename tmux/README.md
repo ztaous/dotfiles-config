@@ -50,7 +50,7 @@ New panes open in the current pane's directory.
 
 - `Ctrl-b [`: enter copy mode
 - `v`: begin a selection
-- `y`: copy the selection to tmux and the system clipboard
+- `y`: copy the selection to tmux and, on macOS, the system clipboard
 - `Ctrl-b ]`: paste
 
 ## Configuration

@@ -1,6 +1,6 @@
 # dotfiles
 
-Configuration for Bash, Git, SSH, tmux, and Neovim.
+Configuration for Bash, Git, SSH, tmux, Neovim, and coding agents.
 
 ## Setup
 
@@ -64,9 +64,5 @@ authentication key and again as a signing key.
 - `nvim/` is linked to `~/.config/nvim`.
 - `agents/AGENTS.md` provides shared personal instructions for Codex, Claude
   Code, and OpenCode.
-- Each directory under `agents/skills/` is linked individually into the
-  supported agents' user-level skill directories. Add or remove a skill there,
-  then run `./run.sh agents` to synchronize the links without affecting skills
-  installed by other tools.
 
 The GitHub entry from `ssh/config` is added to `~/.ssh/config` when missing.
