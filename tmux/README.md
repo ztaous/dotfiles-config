@@ -2,6 +2,12 @@
 
 tmux keeps terminal sessions running after the terminal is closed.
 
+## Setup
+
+Run `./run.sh tmux` from the root of the dotfiles repository.
+
+## Basics
+
 A session contains windows, and a window contains panes:
 
 - **Session**: a tmux workspace
@@ -9,10 +15,6 @@ A session contains windows, and a window contains panes:
 - **Pane**: a split within the window
 
 The prefix is `Ctrl-b`. Press the prefix, release it, then press the binding.
-
-## Setup
-
-Run `./run.sh tmux` from the root of the dotfiles repository.
 
 ## Sessions
 
@@ -43,10 +45,11 @@ Press `Ctrl-b d` to detach without stopping the session.
 - `Ctrl-b H/J/K/L`: resize panes
 - `Ctrl-b z`: zoom or restore a pane
 - `Ctrl-b x`: close a pane
+- `Ctrl-b W`: create a development layout and open Neovim
 
 New panes open in the current pane's directory.
 
-## Copy Mode
+## Copy mode
 
 - `Ctrl-b [`: enter copy mode
 - `v`: begin a selection

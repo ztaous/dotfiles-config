@@ -4,16 +4,24 @@ Neovim configuration used by this dotfiles repository.
 
 ## Requirements
 
+The full setup installs the required command-line tools. When running
+`./run.sh nvim` by itself, ensure these are available:
+
 - Neovim 0.11 or newer
 - Git
-- ripgrep (`rg`)
-- fd
-- A Nerd Font for file icons, if wanted
+- ripgrep and fd
+- A C compiler
+- tree-sitter CLI
+
+`clangd` is required for C and C++ language support. A Nerd Font is optional
+for file icons.
 
 ## Setup
 
 Run `./run.sh nvim` from the root of the dotfiles repository, then open
 Neovim. lazy.nvim installs missing plugins on the first start.
+
+## Language support
 
 Language servers are configured for C, C++, Java, Python, Rust, SQL,
 JavaScript, TypeScript, and Lua. Mason automatically installs `jdtls`,
@@ -89,6 +97,11 @@ The leader key is `Space`.
 - Kotlin: `ktlint`
 - SQL: `sqlfluff`
 
+## Appearance
+
+The built-in colorscheme is used by default. A colorscheme selected with
+`:colorscheme` is restored on the next start.
+
 ## Plugins
 
 - **lazy.nvim**: plugin installation
@@ -103,6 +116,3 @@ The leader key is `Space`.
 - **conform.nvim**: formatting
 - **gitsigns.nvim and vim-fugitive**: Git
 - **nvim-autopairs and nvim-surround**: pairs and surrounding edits
-
-> The built-in colorscheme is used by default. A colorscheme selected with
-`:colorscheme` is restored on the next start.
