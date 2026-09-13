@@ -31,10 +31,11 @@ Individual parts can be run on their own:
 ```sh
 ./run.sh tmux
 ./run.sh nvim
+./run.sh agents
 ./run.sh bash git ssh
 ```
 
-Available targets are `packages`, `format`, `git`, `bash`, `ssh`, `tmux`, and `nvim`.
+Available targets are `packages`, `format`, `git`, `bash`, `ssh`, `tmux`, `nvim`, and `agents`.
 Component targets do not install packages unless `packages` is included.
 
 An existing destination is moved to the same path with a `.bak` suffix before
@@ -61,5 +62,11 @@ authentication key and again as a signing key.
 - `git/config` is linked to `~/.config/git/config`.
 - `tmux/tmux.conf` is linked to `~/.config/tmux/tmux.conf`.
 - `nvim/` is linked to `~/.config/nvim`.
+- `agents/AGENTS.md` provides shared personal instructions for Codex, Claude
+  Code, and OpenCode.
+- Each directory under `agents/skills/` is linked individually into the
+  supported agents' user-level skill directories. Add or remove a skill there,
+  then run `./run.sh agents` to synchronize the links without affecting skills
+  installed by other tools.
 
 The GitHub entry from `ssh/config` is added to `~/.ssh/config` when missing.

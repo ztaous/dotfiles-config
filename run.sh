@@ -22,6 +22,9 @@ clear_backups() {
     "$HOME/.ssh/config"
     "$HOME/.config/tmux/tmux.conf"
     "$HOME/.config/nvim"
+    "$HOME/.codex/AGENTS.md"
+    "$HOME/.claude/CLAUDE.md"
+    "$HOME/.config/opencode/AGENTS.md"
   )
 
   for path in "${paths[@]}"; do
@@ -127,6 +130,48 @@ link_nvim() {
   fi
 }
 
+sync_skills() {
+  local dst skill src target
+  local destinations=(
+    "$HOME/.agents/skills"
+    "$HOME/.claude/skills"
+    "$HOME/.config/opencode/skills"
+  )
+
+  for dst in "${destinations[@]}"; do
+    mkdir -p "$dst"
+
+    for target in "$dst"/*; do
+      [ -L "$target" ] || continue
+      case "$(readlink "$target")" in
+        "$DOTFILES/agents/skills/"*)
+          [ -e "$target" ] || {
+            rm "$target"
+            echo "removed stale skill link ${target#$HOME/}"
+          }
+          ;;
+      esac
+    done
+
+    for src in "$DOTFILES"/agents/skills/*; do
+      [ -d "$src" ] || continue
+      skill="${src##*/}"
+      link "agents/skills/$skill" "${dst#$HOME/}/$skill"
+    done
+  done
+}
+
+link_agents() {
+  link agents/AGENTS.md .codex/AGENTS.md
+  link agents/AGENTS.md .claude/CLAUDE.md
+  link agents/AGENTS.md .config/opencode/AGENTS.md
+  sync_skills
+}
+
+setup_agents() {
+  link_agents
+}
+
 gen_ssh_key() {
   if [ -f "$SSH_KEY" ]; then
     chmod 600 "$SSH_KEY"
@@ -167,16 +212,17 @@ setup_all() {
   setup_ssh
   link_tmux
   link_nvim
+  setup_agents
 }
 
 usage() {
-  echo "usage: ${0##*/} [all|packages|format|git|bash|ssh|tmux|nvim]..."
+  echo "usage: ${0##*/} [all|packages|format|git|bash|ssh|tmux|nvim|agents]..."
   echo "       ${0##*/} --clear-backups"
 }
 
 validate_target() {
   case "$1" in
-    all|packages|format|git|bash|ssh|tmux|nvim) ;;
+    all|packages|format|git|bash|ssh|tmux|nvim|agents) ;;
     *)
       echo "unknown target: $1" >&2
       usage >&2
@@ -195,6 +241,7 @@ run_target() {
     ssh) setup_ssh ;;
     tmux) link_tmux ;;
     nvim) link_nvim ;;
+    agents) setup_agents ;;
   esac
 }
 
