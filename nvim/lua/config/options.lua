@@ -20,6 +20,8 @@ vim.opt.clipboard = "unnamedplus"
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.opt.showtabline = 2
+vim.opt.laststatus = 2
+vim.opt.statusline = " %f %m%r %= %y  %l:%c "
 
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 

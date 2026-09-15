@@ -24,7 +24,8 @@ prompt_git_branch() {
   printf ' (%s)' "$branch"
 }
 
-PS1='\[\e[32m\]\u@\h\[\e[0m\] \[\e[1;34m\]\W\[\e[0;35m\]$(prompt_git_branch)\[\e[0m\] \$ '
+PROMPT_DIRTRIM=3
+PS1='\[\e[32m\]\u@\h\[\e[0m\] \[\e[1;34m\]\w\[\e[0;35m\]$(prompt_git_branch)\[\e[0m\] \$ '
 
 if command -v fzf >/dev/null 2>&1; then
   fzf_init="$(fzf --bash 2>/dev/null)" && eval "$fzf_init"
